@@ -7,6 +7,7 @@ module.exports = (RED) => {
 
     if (!config.hostname || !config.apikey || !config.appid) {
       node.error('config is missing');
+      return;
     }
 
     node.AssetsQuery = AssetsQuery;
