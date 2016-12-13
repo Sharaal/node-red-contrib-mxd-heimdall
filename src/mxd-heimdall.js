@@ -11,6 +11,10 @@ module.exports = (RED) => {
     }
 
     node.AssetsQuery = AssetsQuery;
-    node.heimdall = new Heimdall({ hostname: config.hostname, apikey: config.apikey, appid: config.appid });
+    node.heimdall = new Heimdall({
+      hostname: config.hostname,
+      apikey: config.apikey,
+      appid: config.appid
+    });
   });
 };
