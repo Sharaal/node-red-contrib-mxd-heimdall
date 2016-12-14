@@ -21,6 +21,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
+    "node-red-contrib-dnode": "^1.0.0",
     "mxd-heimdall": "^2.3.0"
   },
   "devDependencies": {

@@ -1,20 +1,10 @@
 const { AssetsQuery, Heimdall } = require('mxd-heimdall');
+const DNode = require('node-red-contrib-dnode');
 
-module.exports = (RED) => {
-  RED.nodes.registerType('mxd-heimdall', function NODE(config) {
-    RED.nodes.createNode(this, config);
-    const node = this;
-
-    if (!config.hostname || !config.apikey || !config.appid) {
-      node.error('config is missing');
-      return;
-    }
-
-    node.AssetsQuery = AssetsQuery;
-    node.heimdall = new Heimdall({
-      hostname: config.hostname,
-      apikey: config.apikey,
-      appid: config.appid
-    });
+module.exports = DNode.createNode('mxd-heimdall', (dnode) => {
+  const configs = dnode.getConfigs(['hostname', 'apikey', 'appid']);
+  dnode.setServices({
+    AssetsQuery,
+    heimdall: new Heimdall(configs),
   });
-};
+});
